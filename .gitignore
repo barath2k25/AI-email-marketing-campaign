@@ -8,17 +8,25 @@ frontend/.next/
 frontend/out/
 .next/
 
-# Environment files
+# Environment files — keep credentials.env (it has dummy values only)
 .env.local
-*.env
-!credentials.env
+.env.*.local
 
-# Build
+# Build output
 dist/
 build/
 
-# Database
+# Backend runtime database (auto-created, do not commit)
 backend/data/db.json
 
 # OS
 .DS_Store
+
+# Old root-level Next.js files (pre-restructure, superseded by frontend/)
+/src/
+/prisma/
+/next.config.ts
+/postcss.config.mjs
+/tsconfig.json
+/tsconfig.tsbuildinfo
+/next-env.d.ts

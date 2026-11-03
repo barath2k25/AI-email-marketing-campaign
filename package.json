@@ -4,8 +4,9 @@
   "private": true,
   "description": "AI Email Marketing Campaign Builder — college project (local only)",
   "scripts": {
+    "predev": "npm install && npm install --prefix backend && npm install --prefix frontend",
     "dev": "concurrently --names \"BACKEND,FRONTEND\" --prefix-colors \"cyan,magenta\" \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
-    "install:all": "npm install --prefix backend && npm install --prefix frontend",
+    "install:all": "npm install && npm install --prefix backend && npm install --prefix frontend",
     "start": "concurrently --names \"BACKEND,FRONTEND\" \"npm run start --prefix backend\" \"npm start --prefix frontend\"",
     "backend": "npm run dev --prefix backend",
     "frontend": "npm run dev --prefix frontend"
