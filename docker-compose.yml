@@ -1,0 +1,33 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: email-campaign-db
+    environment:
+      POSTGRES_DB: email_campaigns
+      POSTGRES_USER: campaign_user
+      POSTGRES_PASSWORD: campaign_pass
+    ports:
+      - "5434:5432"
+    volumes:
+      - campaign_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U campaign_user -d email_campaigns"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: email-campaign-mailpit
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    environment:
+      MP_MAX_MESSAGES: 500
+    volumes:
+      - mailpit_data:/data
+
+volumes:
+  campaign_db_data:
+  mailpit_data:
